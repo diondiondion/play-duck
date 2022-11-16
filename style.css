@@ -163,7 +163,7 @@ img {
 }
 
 body {
-	font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+	font-family: "Livvic", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 	font-size: var(--fluid-m);
 	line-height: 1.45;
 }
