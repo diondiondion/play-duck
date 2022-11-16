@@ -1,0 +1,302 @@
+/* FONTS */
+
+@font-face {
+    font-family: 'Livvic';
+    src: url('assets/fonts/livvic/livvic-bold.woff2') format('woff2'),
+         url('assets/fonts/livvic/livvic-bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Livvic';
+    src: url('assets/fonts/livvic/livvic-medium.woff2') format('woff2'),
+         url('assets/fonts/livvic/livvic-medium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Literata';
+    src: url('assets/fonts/literata/literata-bold.woff2') format('woff2'),
+         url('assets/fonts/literata/literata-bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+}
+
+/* TYPE SCALE */
+/* @link https://utopia.fyi/type/calculator?c=520,18,1.333,960,26,1.333,2,1,&s=0.75|0.5|0.25,1.5|2|3|4,s-l */
+
+:root {
+	--fluid-min-width: 420;
+	--fluid-max-width: 960;
+
+	--fluid-screen: 100vw;
+	--fluid-bp: calc(
+		(var(--fluid-screen) - var(--fluid-min-width) / 16 * 1rem) /
+			(var(--fluid-max-width) - var(--fluid-min-width))
+		);
+}
+
+@media screen and (min-width: 960px) {
+	:root {
+		--fluid-screen: calc(var(--fluid-max-width) * 1px);
+	}
+}
+  
+:root {  
+	--f-s-min: 14;
+	--f-s-max: 20;
+	--fluid-s: calc(
+		((var(--f-s-min) / 16) * 1rem) + (var(--f-s-max) - var(--f-s-min)) *
+		var(--fluid-bp)
+	);
+  
+	--f-m-min: 18;
+	--f-m-max: 26;
+	--fluid-m: calc(
+		((var(--f-m-min) / 16) * 1rem) + (var(--f-m-max) - var(--f-m-min)) *
+		var(--fluid-bp)
+	);
+  
+	--f-l-min: 24;
+	--f-l-max: 35;
+	--fluid-l: calc(
+		((var(--f-l-min) / 16) * 1rem) + (var(--f-l-max) - var(--f-l-min)) *
+		var(--fluid-bp)
+	);
+  
+	--f-xl-min: 32;
+	--f-xl-max: 46;
+	--fluid-xl: calc(
+		((var(--f-xl-min) / 16) * 1rem) + (var(--f-xl-max) - var(--f-xl-min)) *
+		var(--fluid-bp)
+	);
+}
+
+/* SPACE SCALE */
+/* @link https://utopia.fyi/space/calculator?c=520,18,1.333,960,26,1.333,3,2,&s=0.75|0.5|0.25,1.5|2|3|4,s-l */
+
+:root {
+	--fc-3xs-min: (var(--fc-s-min) * 0.25); 
+	--fc-3xs-max: (var(--fc-s-max) * 0.25);
+  
+	--fc-2xs-min: (var(--fc-s-min) * 0.5); 
+	--fc-2xs-max: (var(--fc-s-max) * 0.5);
+  
+	--fc-xs-min: (var(--fc-s-min) * 0.75); 
+	--fc-xs-max: (var(--fc-s-max) * 0.75);
+  
+	--fc-s-min: (var(--f-0-min, 18)); 
+	--fc-s-max: (var(--f-0-max, 26));
+  
+	--fc-m-min: (var(--fc-s-min) * 1.5); 
+	--fc-m-max: (var(--fc-s-max) * 1.5);
+  
+	--fc-l-min: (var(--fc-s-min) * 2); 
+	--fc-l-max: (var(--fc-s-max) * 2);
+  
+	--fc-xl-min: (var(--fc-s-min) * 3); 
+	--fc-xl-max: (var(--fc-s-max) * 3);
+  
+	--fc-2xl-min: (var(--fc-s-min) * 4); 
+	--fc-2xl-max: (var(--fc-s-max) * 4);
+  
+	/* T-shirt sizes */
+	--space-3xs: calc(((var(--fc-3xs-min) / 16) * 1rem) + (var(--fc-3xs-max) - var(--fc-3xs-min)) * var(--fluid-bp));
+	--space-2xs: calc(((var(--fc-2xs-min) / 16) * 1rem) + (var(--fc-2xs-max) - var(--fc-2xs-min)) * var(--fluid-bp));
+	--space-xs: calc(((var(--fc-xs-min) / 16) * 1rem) + (var(--fc-xs-max) - var(--fc-xs-min)) * var(--fluid-bp));
+	--space-s: calc(((var(--fc-s-min) / 16) * 1rem) + (var(--fc-s-max) - var(--fc-s-min)) * var(--fluid-bp));
+	--space-m: calc(((var(--fc-m-min) / 16) * 1rem) + (var(--fc-m-max) - var(--fc-m-min)) * var(--fluid-bp));
+	--space-l: calc(((var(--fc-l-min) / 16) * 1rem) + (var(--fc-l-max) - var(--fc-l-min)) * var(--fluid-bp));
+	--space-xl: calc(((var(--fc-xl-min) / 16) * 1rem) + (var(--fc-xl-max) - var(--fc-xl-min)) * var(--fluid-bp));
+	--space-2xl: calc(((var(--fc-2xl-min) / 16) * 1rem) + (var(--fc-2xl-max) - var(--fc-2xl-min)) * var(--fluid-bp));
+	
+	/* One-up pairs */
+	--space-3xs-2xs: calc(((var(--fc-3xs-min) / 16) * 1rem) + (var(--fc-2xs-max) - var(--fc-3xs-min)) * var(--fluid-bp));
+	--space-2xs-xs: calc(((var(--fc-2xs-min) / 16) * 1rem) + (var(--fc-xs-max) - var(--fc-2xs-min)) * var(--fluid-bp));
+	--space-xs-s: calc(((var(--fc-xs-min) / 16) * 1rem) + (var(--fc-s-max) - var(--fc-xs-min)) * var(--fluid-bp));
+	--space-s-m: calc(((var(--fc-s-min) / 16) * 1rem) + (var(--fc-m-max) - var(--fc-s-min)) * var(--fluid-bp));
+	--space-m-l: calc(((var(--fc-m-min) / 16) * 1rem) + (var(--fc-l-max) - var(--fc-m-min)) * var(--fluid-bp));
+	--space-l-xl: calc(((var(--fc-l-min) / 16) * 1rem) + (var(--fc-xl-max) - var(--fc-l-min)) * var(--fluid-bp));
+	--space-xl-2xl: calc(((var(--fc-xl-min) / 16) * 1rem) + (var(--fc-2xl-max) - var(--fc-xl-min)) * var(--fluid-bp));
+  
+	/* Custom pairs */
+	--space-s-l: calc(((var(--fc-s-min) / 16) * 1rem) + (var(--fc-l-max) - var(--fc-s-min)) * var(--fluid-bp));
+}
+
+
+*, *::before, *::after {
+	box-sizing: border-box;
+}
+
+:root {
+	--brown: #9E4949;
+	--yellow: #FDFF8E;
+	--blue: #3D7AF0;
+
+	--text: var(--brown);
+	--links: var(--green);
+	--background: var(--yellow);
+	
+	color: var(--text);
+	background-color: var(--background);
+	font-size: 16px;
+}
+
+/* @media (prefers-color-scheme: dark) {
+	:root {
+		--text: var(--yellow);
+		--links: var(--green);
+		--background: var(--blue);
+	}
+} */
+
+html, body, h1, h2, h3, p {
+	margin: 0;
+	padding: 0;
+}
+
+img {
+	display: block;
+	max-width: 100%;
+}
+
+body {
+	font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+	font-size: var(--fluid-m);
+	line-height: 1.45;
+}
+
+.heading-xl,
+h1 {
+	font-size: var(--fluid-xl);
+	font-weight: bold;
+	line-height: 1.25;
+}
+
+.heading-l,
+.byline,
+h2 {
+	font-family: Literata, Georgia, serif;
+	font-size: var(--fluid-l);
+	font-weight: bold;
+	margin-bottom: 0.7em;
+	/* This improves the vertical alignment ever so slightly */
+	margin-left: -0.06em;
+}
+
+.byline {
+	margin-bottom: 0;
+}
+
+.heading-m,
+h3 {
+	font-size: var(--fluid-m);
+	font-weight: bold;
+	margin-bottom: 0.5em;
+}
+
+.small {
+	font-size: var(--fluid-s);
+}
+
+p {
+	margin-bottom: var(--space-m);
+}
+
+/* LAYOUT */
+
+body {
+	display: grid;
+	row-gap: var(--space-m);
+	
+	padding: var(--space-s-l);
+}
+
+@media screen and (min-width: 560px) {
+	body {
+		grid-template-columns:
+			1fr
+			[side] minmax(0, 240px)
+			var(--space-s-l)
+			[main] fit-content(700px)
+			1.5fr; /* A bit more space on the right to visually centre the content */
+		grid-template-rows: minmax(50vh, max-content);
+		align-items: center;
+	}
+}
+
+.logo {
+	grid-column: side;
+}
+
+@media screen and (max-width: 559px) {
+	.logo {
+		width: 40%;
+		justify-self: center;
+		margin-top: var(--space-m);
+	}
+}
+
+header, section {
+	grid-column: main;
+}
+
+header {
+	margin-top: calc(-1 * var(--space-xs-s));
+}
+
+/* CUSTOM LIST */
+
+ol,
+ul {
+	list-style: none;
+	counter-reset: duck-counter;
+	padding-left: 2em;
+	margin: 0;
+}
+
+@media screen and (min-width: 560px) {
+	ol,
+	ul {
+		padding-left: 0;
+	}
+}
+
+ol li,
+ul li {
+	position: relative;
+	counter-increment: duck-counter;
+}
+ol li:not(:last-of-type),
+ul li:not(:last-of-type) {
+	margin-bottom: var(--space-3xs)
+}
+ol li::before,
+ul li::before {
+	--bullet-size: 1.7em;
+	content: counter(duck-counter);
+	position: absolute;
+	top: 0.1em;
+	right: calc(100% + var(--space-xs));
+
+	display: block;
+	width: var(--bullet-size);
+	height: var(--bullet-size);
+	padding-top: 0.1em;
+
+	font-size: var(--fluid-s);
+	font-weight: bold;
+	
+	color: var(--background);
+	background-color: var(--text);
+	
+	border-radius: 50%;
+	text-align: center;
+}
+ul li::before {
+	--bullet-size: 0.6em;
+	content: '';
+	top: 0.6em;
+}
