@@ -9,35 +9,80 @@
 	</head>
 	<body>
 		<img
-			src="assets/images/duck-seal.svg"
-			alt="An oval seal containing the words Play Duck and below it, a hand-drawn side view of a duck's head"
+			src="assets/images/duck-seal.png"
+			srcset="
+				assets/images/duck-seal.png,
+				assets/images/duck-seal@2x.png 2x
+			"
+			alt="An oval seal containing the words Play Duck and below it, a cartoon-style pencil drawing of a mallard duck on a blue background"
 			class="logo"
 		/>
 		<header>
 			<p class="byline">Duck</p>
 			<h1>
-				An analog game to play
-				<span id="js-who">with your friends</span>
-				<span id="js-where">in the park</span>.
+				An analog game to play with your
+				<span id="js-who">friends</span>
+				<span id="js-where">in the park</span><span id="js-dot">.</span>
 			</h1>
 		</header>
 
 		<section>
 			<h2>How to play</h2>
 			<ol>
-				<li>Gather your companion(s)!</li>
-				<li>Roam the outdoors!</li>
+				<li>
+					Gather your companion(s)!
+					<img
+						class="guide-image"
+						src="assets/images/gathering-duck-friends.png"
+						srcset="
+							assets/images/gathering-duck-friends.png,
+							assets/images/gathering-duck-friends@2x.png 2x
+						"
+					/>
+				</li>
+				<li>
+					Roam the outdoors!
+					<img
+						class="guide-image"
+						src="assets/images/roam-the-outdoors.png"
+						srcset="
+							assets/images/roam-the-outdoors.png,
+							assets/images/roam-the-outdoors@2x.png 2x
+						"
+					/>
+				</li>
 				<li>
 					When you spot a duck, be the first to shout
 					&ldquo;Duck&rdquo;!
+					<img
+						class="guide-image"
+						src="assets/images/spot-a-duck.png"
+						srcset="
+							assets/images/spot-a-duck.png,
+							assets/images/spot-a-duck@2x.png 2x
+						"
+					/>
 				</li>
 				<li>
 					Were you first? Congrats, you are today&rsquo;s winner of
 					Duck!
+					<img
+						class="guide-image"
+						src="assets/images/win-duck.png"
+						srcset="
+							assets/images/win-duck.png,
+							assets/images/win-duck@2x.png 2x
+						"
+					/>
 				</li>
 				<li>
 					Was someone else faster? Don&rsquo;t brood: Tomorrow is
 					another chance to win Duck.
+					<img
+						class="guide-image"
+						src="assets/images/try-another-day.png"
+						srcset="assets/images/try-another-day.png, assets/images/try-another-day@2x 2x.png"
+					/>
 				</li>
 			</ol>
 		</section>
@@ -48,12 +93,149 @@
 			<h3>Wait, that&rsquo;s it? Where do I download the app?</h3>
 			<p>
 				That&rsquo;s it. There&rsquo;s no app to download and you
-				don&rsquo;t even need your phone. It helps to live near a pond
-				or a river, because ducks like those.
+				don&rsquo;t even need your phone. It does help to live near a
+				pond or a river, because ducks like those.
+			</p>
+
+			<h3>
+				I saw a duck and yelled Duck! as fast as I could. Turns out it
+				wasn&rsquo;t a duck, but an arrogant moorhen with very large
+				feet! I think it sneered at me, too.
+			</h3>
+			<p>
+				Sorry, that means you lost the game for today. Part of the game
+				is making sure that you&rsquo;re really looking at a duck and
+				not some other random bird before you make the claim. If you
+				were playing with a single partner, they automatically won and
+				you should probably buy them an ice cream.
 			</p>
 
 			<h3>Where I live, no ducks venture. Can I still play Duck?</h3>
-			<p>Maybe not Duck, but</p>
+			<p>
+				Maybe there&rsquo;s another local animal you can play with? As a
+				rule of thumb, the animal shouldn&rsquo;t be so ubiquitous that
+				you&rsquo;re guaranteed to see one whenever you step outside. A
+				50-50 chance would be good!
+			</p>
 		</section>
+		<script>
+			// UTILS
+
+			function range(length) {
+				const output = [];
+				for (let i = 0; i < length; i += 1) {
+					output.push(i);
+				}
+				return output;
+			}
+
+			function createRandomSequence(length) {
+				const array = range(length);
+				let currentIndex = length;
+				let temporaryValue;
+				let randomIndex;
+
+				// While there remain elements to shuffle...
+				while (0 !== currentIndex) {
+					// Create a random index to pick from the array
+					randomIndex = Math.floor(Math.random() * currentIndex);
+					currentIndex -= 1;
+
+					// Cache the value, and swap it with the current element
+					temporaryValue = array[currentIndex];
+					array[currentIndex] = array[randomIndex];
+					array[randomIndex] = temporaryValue;
+				}
+
+				return array;
+			}
+
+			// Get random, non-repeating element from array
+			const rrCache = {};
+			function roundRobin(key, array) {
+				// If there's no
+				if (!rrCache[key] || rrCache[key].length === 0) {
+					rrCache[key] = createRandomSequence(array.length);
+				}
+
+				const [randomIndex] = rrCache[key].splice(0, 1);
+
+				console.log(rrCache);
+
+				return array[randomIndex];
+			}
+
+			// DATA
+
+			const whos = [
+				'friends',
+				'family',
+				'pen pal',
+				'colleagues',
+				'nephew',
+				'seven nieces',
+				'grandma',
+				'grandchildren',
+				'triplets',
+				'librarian',
+				'ex-boyfriend',
+				'kebab guy',
+				'drug dealer',
+				'tax accountant',
+				'neighbours',
+				'team',
+				'lover',
+				'best friend',
+				'soulmate',
+				'children',
+				'local gang',
+				'band',
+				'dog',
+				'weird acquaintance from yoga',
+			];
+
+			const wheres = [
+				'in the park',
+				'in the woods',
+				'in the city',
+				'by the river',
+				'by the lake',
+				'by the sea',
+				'in the zoo',
+				'on a walk',
+				'on a hike',
+				'on a rooftop',
+				'on a holiday',
+				'on your honeymoon',
+				'on horseback',
+				'at lunch time',
+				'in the morning',
+				'in the evening',
+				'at any time of day',
+				'starting today',
+				'for the rest of your lives',
+				'via text',
+				'eating ice creams',
+			];
+
+			// Progressive enhancement: Add JS-only button
+			const buttonContainer = document.getElementById('js-dot');
+			const button = document.createElement('button');
+			button.setAttribute('type', 'button');
+			button.classList.add('link');
+			button.appendChild(document.createTextNode('or…'));
+			buttonContainer.textContent = ', ';
+			buttonContainer.appendChild(button);
+
+			const whoContainer = document.getElementById('js-who');
+			const whereContainer = document.getElementById('js-where');
+
+			function randomise() {
+				whoContainer.textContent = roundRobin('who', whos);
+				whereContainer.textContent = roundRobin('where', wheres);
+			}
+
+			button.addEventListener('click', randomise);
+		</script>
 	</body>
 </html>

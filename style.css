@@ -134,9 +134,11 @@
 	--brown: #9E4949;
 	--yellow: #FDFF8E;
 	--blue: #3D7AF0;
+	--dark-blue: #020f37;
+	--violet: #c5c7ff;
 
 	--text: var(--brown);
-	--links: var(--green);
+	--links: var(--blue);
 	--background: var(--yellow);
 	
 	color: var(--text);
@@ -166,6 +168,26 @@ body {
 	font-family: "Livvic", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 	font-size: var(--fluid-m);
 	line-height: 1.45;
+}
+
+a,
+.link {
+	font: inherit;
+	text-align: inherit;
+	text-decoration: underline;
+
+	color: var(--links);
+	background-color: transparent;
+
+	border: none;
+	border-radius: 0;
+	appearance: none;
+}
+
+/* Normalise inner button spacing in Gecko browsers */
+.link::-moz-focus-inner {
+	padding: 0;
+	border: 0;
 }
 
 .heading-xl,
@@ -299,4 +321,8 @@ ul li::before {
 	--bullet-size: 0.6em;
 	content: '';
 	top: 0.6em;
+}
+
+.guide-image {
+	margin: var(--space-s) 0 var(--space-s) calc(-1 * var(--space-s));
 }
