@@ -5,6 +5,61 @@
 		<title>Duck &mdash; Go outside and play it!</title>
 
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="theme-color" content="#FDFF8E" />
+
+		<link rel="manifest" href="/site.webmanifest" />
+		<link
+			rel="apple-touch-icon"
+			sizes="180x180"
+			href="favicons/apple-touch-icon.png"
+		/>
+		<link
+			rel="icon"
+			type="image/png"
+			sizes="32x32"
+			href="favicons/favicon-32x32.png"
+		/>
+		<link
+			rel="icon"
+			type="image/png"
+			sizes="16x16"
+			href="favicons/favicon-16x16.png"
+		/>
+		<link
+			rel="mask-icon"
+			href="favicons/safari-pinned-tab.svg"
+			color="#3d7af0"
+		/>
+
+		<style>
+			@font-face {
+				font-family: 'Livvic';
+				src: url('assets/fonts/livvic/livvic-bold.woff2')
+						format('woff2'),
+					url('assets/fonts/livvic/livvic-bold.woff') format('woff');
+				font-weight: bold;
+				font-style: normal;
+			}
+
+			@font-face {
+				font-family: 'Livvic';
+				src: url('assets/fonts/livvic/livvic-medium.woff2')
+						format('woff2'),
+					url('assets/fonts/livvic/livvic-medium.woff') format('woff');
+				font-weight: normal;
+				font-style: normal;
+			}
+
+			@font-face {
+				font-family: 'Literata';
+				src: url('assets/fonts/literata/literata-bold.woff2')
+						format('woff2'),
+					url('assets/fonts/literata/literata-bold.woff')
+						format('woff');
+				font-weight: bold;
+				font-style: normal;
+			}
+		</style>
 		<link media="all" rel="stylesheet" href="style.css" />
 	</head>
 	<body>
@@ -19,8 +74,8 @@
 		/>
 		<header>
 			<p class="byline">Duck</p>
-			<h1>
-				An analog game to play with your
+			<h1 aria-live="polite" aria-atomic="false">
+				A social game to play with your
 				<span id="js-who">friends</span>
 				<span id="js-where">in the park</span><span id="js-dot">.</span>
 			</h1>
@@ -98,25 +153,46 @@
 			</p>
 
 			<h3>
-				I saw a duck and yelled Duck! as fast as I could. Turns out it
-				wasn&rsquo;t a duck, but a cheeky moorhen with very large feet!
-				I think it sneered at me, too.
+				I saw a duck and yelled <em>Duck!</em> as fast as I could. Turns
+				out it wasn&rsquo;t a duck, but a cheeky moorhen with very large
+				feet! I think it sneered at me, too.
 			</h3>
 			<p>
 				Sorry, that means you lost the game for today. Part of the game
-				is making sure that you&rsquo;re really looking at a duck and
-				not some other random bird before you make the claim. If you
-				were playing with a single partner, they automatically won and
-				you should probably buy them an ice cream.
+				is making sure that you really spotted a duck before you make
+				the claim.
+			</p>
+			<p>
+				If you were playing with a single partner, they automatically
+				won and you should buy them an ice cream.
+			</p>
+
+			<h3>
+				I&rsquo;m pretty sure that&rsquo;s a duck over there, but
+				it&rsquo;s hard to tell from a distance. It could be a bottle.
+				Should I call it?
+			</h3>
+			<p>
+				Is the bottle dipping its head into the water every now and then
+				and gathering in small groups? If so, it might be a good bet!
+			</p>
+			<p>
+				Otherwise, ask your companions if they agree that you&rsquo;re
+				looking at a duck. You can make the rules as strict as you want.
 			</p>
 
 			<h3>Where I live, no ducks venture. Can I still play Duck?</h3>
 			<p>
-				Maybe there&rsquo;s another local animal you can play with? As a
-				rule of thumb, the animal shouldn&rsquo;t be so common that
-				you&rsquo;re guaranteed to see one whenever you step outside,
-				but also not so rare that it&rsquo;s unlikely to encounter one.
-				A 50-50 chance would be good!
+				Sure, just pick another local animal! It should be one
+				that&rsquo;s common enough that you&rsquo;re quite likely
+				&ndash; but not guaranteed &ndash; to see one when you venture
+				outside.
+			</p>
+
+			<h3>So you really think I should give this game a try, huh?</h3>
+			<p>
+				Of course! Truth be told, now that you know the rules, you may
+				find it hard <em>not</em> to play the game.
 			</p>
 		</section>
 		<script>
@@ -154,15 +230,16 @@
 			// Get random, non-repeating element from array
 			const rrCache = {};
 			function roundRobin(key, array) {
-				// If there's no
+				// Create a sequence of random numbers at the provided
+				// key if there isn't one yet, or if it's empty
 				if (!rrCache[key] || rrCache[key].length === 0) {
 					rrCache[key] = createRandomSequence(array.length);
 				}
 
+				// Pick & remove the first element from the sequence
 				const [randomIndex] = rrCache[key].splice(0, 1);
 
-				console.log(rrCache);
-
+				// Return an item from the array at the extracted index
 				return array[randomIndex];
 			}
 
@@ -199,6 +276,7 @@
 				'in the park',
 				'in the woods',
 				'in the city',
+				"in your uncle's wonky Cessna",
 				'by the river',
 				'by the lake',
 				'by the sea',
@@ -209,6 +287,7 @@
 				'on a holiday',
 				'on your honeymoon',
 				'on horseback',
+				'on a boat',
 				'at lunch time',
 				'in the morning',
 				'in the evening',

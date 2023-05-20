@@ -1,29 +1,3 @@
-/* FONTS */
-
-@font-face {
-    font-family: 'Livvic';
-    src: url('assets/fonts/livvic/livvic-bold.woff2') format('woff2'),
-         url('assets/fonts/livvic/livvic-bold.woff') format('woff');
-    font-weight: bold;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'Livvic';
-    src: url('assets/fonts/livvic/livvic-medium.woff2') format('woff2'),
-         url('assets/fonts/livvic/livvic-medium.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'Literata';
-    src: url('assets/fonts/literata/literata-bold.woff2') format('woff2'),
-         url('assets/fonts/literata/literata-bold.woff') format('woff');
-    font-weight: bold;
-    font-style: normal;
-}
-
 /* TYPE SCALE */
 /* @link https://utopia.fyi/type/calculator?c=520,18,1.333,960,26,1.333,2,1,&s=0.75|0.5|0.25,1.5|2|3|4,s-l */
 
@@ -154,7 +128,7 @@
 	}
 } */
 
-html, body, h1, h2, h3, p {
+html, body, h1, h2, h3, p, ol, ul {
 	margin: 0;
 	padding: 0;
 }
@@ -190,42 +164,46 @@ a,
 	border: 0;
 }
 
-.heading-xl,
 h1 {
 	font-size: var(--fluid-xl);
 	font-weight: bold;
 	line-height: 1.25;
 }
 
-.heading-l,
 .byline,
 h2 {
 	font-family: Literata, Georgia, serif;
 	font-size: var(--fluid-l);
 	font-weight: bold;
-	margin-bottom: 0.7em;
 	/* This improves the vertical alignment ever so slightly */
 	margin-left: -0.06em;
 }
 
-.byline {
-	margin-bottom: 0;
+h2 + * {
+	margin-top: var(--space-xs);
 }
 
-.heading-m,
 h3 {
 	font-size: var(--fluid-m);
 	font-weight: bold;
-	margin-bottom: 0.5em;
+}
+
+h3 + * {
+	margin-top: var(--space-2xs);
 }
 
 .small {
 	font-size: var(--fluid-s);
 }
 
-p {
-	margin-bottom: var(--space-m);
+p + p {
+	margin-top: var(--space-2xs);
 }
+
+p + h3 {
+	margin-top: var(--space-l);
+}
+
 
 /* LAYOUT */
 
@@ -276,7 +254,6 @@ ul {
 	list-style: none;
 	counter-reset: duck-counter;
 	padding-left: 2em;
-	margin: 0;
 }
 
 @media screen and (min-width: 560px) {
@@ -293,7 +270,7 @@ ul li {
 }
 ol li:not(:last-of-type),
 ul li:not(:last-of-type) {
-	margin-bottom: var(--space-3xs)
+	margin-bottom: var(--space-2xs)
 }
 ol li::before,
 ul li::before {
@@ -324,5 +301,5 @@ ul li::before {
 }
 
 .guide-image {
-	margin: var(--space-s) 0 var(--space-s) calc(-1 * var(--space-s));
+	margin: var(--space-s) 0 var(--space-l) calc(-1 * var(--space-s));
 }
