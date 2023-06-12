@@ -110,6 +110,7 @@
 	--blue: #3D7AF0;
 	--dark-blue: #020f37;
 	--violet: #c5c7ff;
+	--white: #fff;
 
 	--text: var(--brown);
 	--links: var(--blue);
@@ -145,13 +146,10 @@ body {
 }
 
 a,
-.link {
+.link,
+.button {
 	font: inherit;
 	text-align: inherit;
-	text-decoration: underline;
-
-	color: var(--links);
-	background-color: transparent;
 
 	border: none;
 	border-radius: 0;
@@ -159,19 +157,42 @@ a,
 }
 
 /* Normalise inner button spacing in Gecko browsers */
-.link::-moz-focus-inner {
+.link::-moz-focus-inner,
+.button::-moz-focus-inner {
 	padding: 0;
 	border: 0;
 }
 
-h1 {
+a,
+.link {
+	text-decoration: underline;
+	color: var(--links);
+	background-color: transparent;
+}
+
+.button {
+	color: var(--blue);
+	background-color: var(--white);
+	border-radius: 0.25em;
+
+	padding: var(--space-3xs) var(--space-xs);
+}
+
+.button-row:not(:empty) {
+	display: flex;
+	gap: var(--space-xs);
+	margin-top: var(--space-xs);
+}
+
+h1,
+.large-heading {
 	font-size: var(--fluid-xl);
 	font-weight: bold;
 	line-height: 1.25;
 }
 
-.byline,
-h2 {
+h2,
+.medium-heading {
 	font-family: Literata, Georgia, serif;
 	font-size: var(--fluid-l);
 	font-weight: bold;
@@ -179,16 +200,19 @@ h2 {
 	margin-left: -0.06em;
 }
 
-h2 + * {
+h2 + *,
+.medium-heading + * {
 	margin-top: var(--space-xs);
 }
 
-h3 {
+h3,
+.small-heading {
 	font-size: var(--fluid-m);
 	font-weight: bold;
 }
 
-h3 + * {
+h3 + *,
+.small-heading + * {
 	margin-top: var(--space-2xs);
 }
 
@@ -200,7 +224,12 @@ p + p {
 	margin-top: var(--space-2xs);
 }
 
-p + h3 {
+.small p + p {
+	margin-top: var(--space-3xs);
+}
+
+p + h3,
+p + .small-heading {
 	margin-top: var(--space-l);
 }
 
@@ -210,7 +239,6 @@ p + h3 {
 body {
 	display: grid;
 	row-gap: var(--space-m);
-	
 	padding: var(--space-s-l);
 }
 
@@ -239,12 +267,29 @@ body {
 	}
 }
 
-header, section {
+header, section, footer, aside {
 	grid-column: main;
 }
 
 header {
 	margin-top: calc(-1 * var(--space-xs-s));
+}
+
+footer {
+	font-size: var(--fluid-s);
+}
+
+.cookie-notice {
+	--background: var(--blue);
+	--text: var(--white);
+	--links: var(--yellow);
+
+	margin-top: var(--space-l);
+	padding: var(--space-2xs-xs) var(--space-xs-s) var(--space-xs-s);
+	border-radius: 0.5em;
+
+	color: var(--text);
+	background-color: var(--background);
 }
 
 /* CUSTOM LIST */

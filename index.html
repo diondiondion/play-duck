@@ -178,7 +178,8 @@
 			</p>
 			<p>
 				Otherwise, ask your companions if they agree that you&rsquo;re
-				looking at a duck. You can make the rules as strict as you want.
+				looking at a duck. You can make the rules as loose or strict as
+				you want.
 			</p>
 
 			<h3>Where I live, no ducks venture. Can I still play Duck?</h3>
@@ -189,12 +190,45 @@
 				outside.
 			</p>
 
-			<h3>So you really think I should give this game a try, huh?</h3>
+			<h3>So you really think I should give this game a try?</h3>
 			<p>
-				Of course! Truth be told, now that you know the rules, you may
-				find it hard <em>not</em> to play the game.
+				Well, now that you know the rules, you may find it hard to
+				resist the urge to shout <em>Duck!</em> every time you see one.
+				But worry not, as there are many of us. Pairs, handfuls, if not
+				half a dozens!
+			</p>
+			<p>
+				If you have played and enjoyed this game (or not), I&rsquo;d
+				love to hear about your experience. You can place your message
+				in a bottle, seal it securely, and release it into a body of
+				water near you, or
+				<a href="mailto:mail@diondiondion.com">send me an email</a>.
 			</p>
 		</section>
+		<aside class="cookie-notice small">
+			<h2 class="small-heading">Cookie notice</h2>
+			<p>
+				Ducks will happily eat cookies and other bread-like substances,
+				but
+				<a
+					href="https://phys.org/news/2021-01-bread-home-ducks-science.html"
+					>they&rsquo;re not good for them</a
+				>!
+			</p>
+			<p>
+				So please don&rsquo;t feed a duck a cookie. This website
+				doesn&rsquo;t use them, either.
+			</p>
+			<div class="button-row" id="js-confirm-buttons"></div>
+			<template id="js-confirm-buttons-template">
+				<button class="button js-confirm-notice"></button>
+			</template>
+		</aside>
+		<footer>
+			Created by
+			<a rel="author" href="https://diondiondion.com">Dion Dajka</a>
+			🦆
+		</footer>
 		<script>
 			// UTILS
 
@@ -276,7 +310,6 @@
 				'in the park',
 				'in the woods',
 				'in the city',
-				"in your uncle's wonky Cessna",
 				'by the river',
 				'by the lake',
 				'by the sea',
@@ -316,6 +349,45 @@
 			}
 
 			button.addEventListener('click', randomise);
+
+			/*
+			 * FAKE COOKIE BANNER
+			 */
+
+			const cookieButtonWrapper =
+				document.getElementById('js-confirm-buttons');
+
+			const buttonTemplate = document.getElementById(
+				'js-confirm-buttons-template'
+			).content.firstElementChild;
+
+			function confirmCookieNotice(event) {
+				console.log(event.target.dataset);
+				cookieButtonWrapper.textContent = event.target.dataset.response;
+			}
+
+			const cookieButtons = [
+				{
+					label: 'I accept',
+					response: 'Thanks!',
+				},
+				{
+					label: 'I agree',
+					response: 'Thanks!',
+				},
+				{
+					label: 'I love ducks',
+					response: 'Thanks! We love them too!',
+				},
+			];
+
+			cookieButtons.forEach((data) => {
+				const button = buttonTemplate.cloneNode();
+				button.textContent = data.label;
+				button.setAttribute('data-response', data.response);
+				button.addEventListener('click', confirmCookieNotice);
+				cookieButtonWrapper.appendChild(button);
+			});
 		</script>
 	</body>
 </html>
