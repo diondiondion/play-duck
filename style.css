@@ -137,6 +137,7 @@ html, body, h1, h2, h3, p, ol, ul {
 img {
 	display: block;
 	max-width: 100%;
+	height: auto;
 }
 
 body {
@@ -238,6 +239,10 @@ p + .small-heading {
 
 body {
 	display: grid;
+	grid-template-rows:
+		minmax(35vh, max-content)
+		minmax(35vh, max-content)
+		auto;
 	row-gap: var(--space-m);
 	padding: var(--space-s-l);
 }
@@ -250,7 +255,9 @@ body {
 			var(--space-s-l)
 			[main] fit-content(700px)
 			1.5fr; /* A bit more space on the right to visually centre the content */
-		grid-template-rows: minmax(50vh, max-content);
+		grid-template-rows:
+			minmax(70vh, max-content)
+			minmax(50vh, max-content);
 		align-items: center;
 	}
 }
@@ -263,6 +270,7 @@ body {
 	.logo {
 		width: 40%;
 		justify-self: center;
+		align-self: end;
 		margin-top: var(--space-m);
 	}
 }

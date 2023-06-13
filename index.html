@@ -2,7 +2,9 @@
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<title>Duck &mdash; Go outside and play it!</title>
+		<title>
+			Duck &mdash; A social game to play with your friends in the park
+		</title>
 
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta name="theme-color" content="#FDFF8E" />
@@ -69,6 +71,8 @@
 				assets/images/duck-seal.png,
 				assets/images/duck-seal@2x.png 2x
 			"
+			width="252"
+			height="313"
 			alt="An oval seal containing the words Play Duck and below it, a cartoon-style pencil drawing of a mallard duck on a blue background"
 			class="logo"
 		/>
@@ -93,6 +97,9 @@
 							assets/images/gathering-duck-friends.png,
 							assets/images/gathering-duck-friends@2x.png 2x
 						"
+						width="629"
+						height="344"
+						alt="A colourful pencil drawing of a family of three holding hands, excitedly walking along a path. The family consists of a black man, a white woman with red hair, and a toddler leading the way towards the right."
 					/>
 				</li>
 				<li>
@@ -104,6 +111,9 @@
 							assets/images/roam-the-outdoors.png,
 							assets/images/roam-the-outdoors@2x.png 2x
 						"
+						width="447"
+						height="693"
+						alt="A birch tree on a green patch of grass. There's a squirrel in the tree, and a toadstool growing next to the tree. Half-concealed by the tree sits a duck wearing a toadstool hat in an attempt to hide from the players."
 					/>
 				</li>
 				<li>
@@ -116,6 +126,9 @@
 							assets/images/spot-a-duck.png,
 							assets/images/spot-a-duck@2x.png 2x
 						"
+						width="559"
+						height="395"
+						alt="A pair of ducks is swimming down a river, underneath a bridge that two women are crossing. One of the women is leaning over the railing, pointing at the ducks and shouting. Abover her is speech bubble with a simple sketch of a duck."
 					/>
 				</li>
 				<li>
@@ -128,6 +141,9 @@
 							assets/images/win-duck.png,
 							assets/images/win-duck@2x.png 2x
 						"
+						width="393"
+						height="466"
+						alt="A close-up of the woman from the previous image. She is happy about her win and has raised her fists to shoulder level in excitement. A mallard duck sits perched on her shoulder, looking at her with a slight smile."
 					/>
 				</li>
 				<li>
@@ -137,6 +153,9 @@
 						class="guide-image"
 						src="assets/images/try-another-day.png"
 						srcset="assets/images/try-another-day.png, assets/images/try-another-day@2x 2x.png"
+						width="615"
+						height="563"
+						alt="A romantic scene of a bright yellow sun setting over an ocean or a lake. In the distance, the silhouette of two flying ducks can be seen against the pink sky. In the foreground, a duck is diving with its rump pointing up, showing its butthole."
 					/>
 				</li>
 			</ol>
@@ -219,7 +238,12 @@
 				So please don&rsquo;t feed a duck a cookie. This website
 				won&rsquo;t feed your device any, either.
 			</p>
-			<div class="button-row" id="js-confirm-buttons"></div>
+			<div
+				class="button-row"
+				id="js-confirm-buttons"
+				aria-live="polite"
+				aria-atomic="false"
+			></div>
 			<template id="js-confirm-buttons-template">
 				<button class="button js-confirm-notice"></button>
 			</template>
@@ -302,10 +326,10 @@
 				'your local gang',
 				'your band',
 				'your dog',
+				'your dad’s personal trainer',
 				'that weird guy from yoga',
-				'a feral cat',
 				'a bunch of pirates',
-				'an entire soccer team',
+				'an entire football team',
 			];
 
 			const wheres = [
@@ -314,12 +338,13 @@
 				'in the city',
 				'by the river',
 				'by the lake',
-				'by the sea',
+				'by the raging sea',
 				'in the zoo',
 				'on a walk',
 				'on a hike',
 				'on a rooftop',
-				'on a holiday',
+				'on holiday',
+				'on the beach',
 				'on your honeymoon',
 				'on horseback',
 				'on a boat',
@@ -327,10 +352,10 @@
 				'in the morning',
 				'in the evening',
 				'at any time of day',
-				'starting today',
-				'for the rest of your lives',
 				'via text',
-				'eating ice creams',
+				'during a work meeting',
+				'while eating ice creams',
+				'while getting your hair cut',
 			];
 
 			// Progressive enhancement: Add JS-only button
@@ -363,11 +388,6 @@
 				'js-confirm-buttons-template'
 			).content.firstElementChild;
 
-			function confirmCookieNotice(event) {
-				console.log(event.target.dataset);
-				cookieButtonWrapper.textContent = event.target.dataset.response;
-			}
-
 			const cookieButtons = [
 				{
 					label: 'I accept',
@@ -382,6 +402,10 @@
 					response: 'Thanks! We love them too!',
 				},
 			];
+
+			function confirmCookieNotice(event) {
+				cookieButtonWrapper.textContent = event.target.dataset.response;
+			}
 
 			cookieButtons.forEach((data) => {
 				const button = buttonTemplate.cloneNode();
