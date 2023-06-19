@@ -166,9 +166,11 @@ a,
 
 a,
 .link {
-	text-decoration: underline;
 	color: var(--links);
 	background-color: transparent;
+	text-decoration: underline;
+	text-decoration-thickness: max(0.1em, 2px);
+	text-underline-offset: 0.15em;
 }
 
 .button {
@@ -183,6 +185,10 @@ a,
 	display: flex;
 	gap: var(--space-xs);
 	margin-top: var(--space-xs);
+}
+
+h1, h2, li {
+	text-wrap: balance;
 }
 
 h1,
