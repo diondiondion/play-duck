@@ -1,4 +1,4 @@
-# Play Duck
+# Play Duck 🦆
 
 A small one-pager outlining the rules for Duck, a game to play with anyone, everywhere.
 
